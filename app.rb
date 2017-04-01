@@ -5,7 +5,7 @@ get '/' do
   'sup'
 end
 
-post '/webhooks/email' do
+post '/webhooks/sparkpost' do
   request.body.rewind
   json = JSON.parse(request.body.read)
 
