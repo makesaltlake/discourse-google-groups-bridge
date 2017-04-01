@@ -6,6 +6,8 @@ get '/' do
 end
 
 post '/webhooks/sparkpost' do
+  halt 403 unless ENV.fetch('SPARKPOST_INBOUND_AUTH_TOKEN') == request.env['HTTP_X_MESSAGESYSTEMS_WEBHOOK_TOKEN']
+
   request.body.rewind
   json = JSON.parse(request.body.read)
 
